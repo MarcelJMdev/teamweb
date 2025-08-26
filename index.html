@@ -184,6 +184,13 @@
             border-color: var(--accent);
         }
 
+        .template-card h3 {
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
         .template-text {
             background: var(--input-bg);
             border: 1px solid var(--input-border);
@@ -219,6 +226,7 @@
             background: var(--success);
         }
 
+        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -226,6 +234,27 @@
 
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .panel-container {
+                padding: 1rem;
+            }
+
+            .category-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .templates-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome-banner {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -257,8 +286,7 @@
             </div>
         </div>
     </div>
-
-    <!-- Panel Content -->
+        <!-- Panel Content -->
     <div id="panelContent" class="panel-container">
         <div class="welcome-banner fade-in">
             <h2 style="font-size: 2rem; margin-bottom: 1rem;">✅ Erfolgreich eingeloggt!</h2>
@@ -282,11 +310,252 @@ LG
 <span class="username-placeholder">[DEIN NAME]</span></div>
                     <button class="copy-btn" data-template="greeting1">Text kopieren</button>
                 </div>
-                <!-- Weitere Template-Cards hier -->
+
+                <div class="template-card">
+                    <h3>Begrüßung 2</h3>
+                    <div class="template-text" id="greeting2">Hi @USER!
+
+Was können wir für dich tun heute?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Begrüßung 3</h3>
+                    <div class="template-text" id="greeting3">Willkommen @USER!
+
+Ich bin heute für dich da. Wie kann ich dir helfen?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting3">Text kopieren</button>
+                </div>
             </div>
         </div>
 
-        <!-- Weitere Kategorien hier -->
+        <!-- Weitere Fragen -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">❓</span>
+                <h2>Weitere Fragen</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Nachfrage 1</h3>
+                    <div class="template-text" id="questions1">Hast du noch weitere Fragen? 
+
+Falls ja, kannst du dich gerne jederzeit melden!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions1">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Nachfrage 2</h3>
+                    <div class="template-text" id="questions2">Gibt es noch etwas, wobei ich dir helfen kann?
+
+Ich bin gerne für dich da!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Nachfrage 3</h3>
+                    <div class="template-text" id="questions3">Brauchst du sonst noch Unterstützung?
+
+Ich nehme mir gerne Zeit für deine Anliegen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem gelöst -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">✅</span>
+                <h2>Problem gelöst</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Lösung 1</h3>
+                    <div class="template-text" id="solved1">Super, dass dein Anliegen gelöst wurde!
+
+Bei weiteren Fragen kannst du mich jederzeit anschreiben.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved1">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Lösung 2</h3>
+                    <div class="template-text" id="solved2">Freut mich, dass ich dir helfen konnte!
+
+Falls noch Fragen aufkommen, stehe ich dir gerne zur Verfügung.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Lösung 3</h3>
+                    <div class="template-text" id="solved3">Toll, dass wir das klären konnten!
+
+Zögere nicht, dich bei weiteren Anliegen zu melden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Bedankungen -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">🌟</span>
+                <h2>Feedback Bedankungen</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Feedback 1</h3>
+                    <div class="template-text" id="feedback1">Vielen Dank für dein Feedback @USER!
+
+Deine Meinung ist uns sehr wichtig und hilft uns, unseren Service stetig zu verbessern.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback1">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Feedback 2</h3>
+                    <div class="template-text" id="feedback2">Danke für deine ausführliche Rückmeldung @USER!
+
+Wir nehmen dein Feedback sehr ernst und werden es in unsere Verbesserungen einbeziehen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Feedback 3</h3>
+                    <div class="template-text" id="feedback3">Hey @USER, danke dass du dir die Zeit genommen hast!
+
+Dein Feedback hilft uns dabei, Farmsucht noch besser zu machen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bewerbungen -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">📝</span>
+                <h2>Bewerbungen</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Bewerbung Eingegangen</h3>
+                    <div class="template-text" id="apply1">Hallo @USER,
+
+vielen Dank für deine Bewerbung! Wir werden diese intern besprechen und melden uns zeitnah bei dir.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply1">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Bewerbung Angenommen</h3>
+                    <div class="template-text" id="apply2">Herzlichen Glückwunsch @USER!
+
+Wir freuen uns, dir mitteilen zu können, dass deine Bewerbung erfolgreich war! 
+
+Ein Teammitglied wird sich in Kürze mit dir in Verbindung setzen, um alles Weitere zu besprechen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Bewerbung Abgelehnt</h3>
+                    <div class="template-text" id="apply3">Hallo @USER,
+
+vielen Dank für deine Bewerbung und dein Interesse an unserem Team.
+
+Leider müssen wir dir mitteilen, dass wir uns gegen deine Bewerbung entschieden haben. 
+
+Wir wünschen dir für die Zukunft alles Gute!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Entbannungsanträge -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">🔓</span>
+                <h2>Entbannungsanträge</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Antrag Eingegangen</h3>
+                    <div class="template-text" id="unban1">Hallo @USER,
+
+danke für deinen Entbannungsantrag. Wir werden deinen Fall prüfen und uns bald bei dir melden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban1">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Antrag Angenommen</h3>
+                    <div class="template-text" id="unban2">Hallo @USER,
+
+wir haben deinen Entbannungsantrag angenommen. Du wurdest soeben entbannt.
+
+Bitte beachte in Zukunft unsere Regeln, um weitere Strafen zu vermeiden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban2">Text kopieren</button>
+                </div>
+
+                <div class="template-card">
+                    <h3>Antrag Abgelehnt</h3>
+                    <div class="template-text" id="unban3">Hallo @USER,
+
+wir haben deinen Entbannungsantrag sorgfältig geprüft.
+
+Leider müssen wir dir mitteilen, dass dein Antrag abgelehnt wurde. Die Sperre bleibt bestehen.
+
+Du kannst in 30 Tagen einen neuen Antrag stellen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -312,6 +581,9 @@ LG
                 placeholders.forEach(placeholder => {
                     placeholder.textContent = name;
                 });
+
+                // Smooth scroll to top after login
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 errorMsg.style.display = 'block';
                 errorMsg.classList.remove('fade-in');
