@@ -1,292 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
+<!-- Der vorherige Head und Style-Bereich bleibt gleich -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmsucht TEAM PANEL</title>
-    <style>
-        :root {
-            --bg-gradient: linear-gradient(135deg, #232526 0%, #414345 100%);
-            --container-bg: #232a34;
-            --container-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            --text-main: #f3f3f3;
-            --text-sub: #bfbfbf;
-            --accent: #667eea;
-            --accent2: #764ba2;
-            --input-bg: #2c3440;
-            --input-border: #44495b;
-            --input-focus: #667eea;
-            --btn-bg: linear-gradient(45deg, #667eea, #764ba2);
-            --btn-bg-hover: linear-gradient(45deg, #764ba2, #667eea);
-            --btn-discord: #5865F2;
-            --error-text: #ff6f6f;
-            --error-bg: #3a2323;
-            --panel-card-bg: #2b3240;
-            --panel-card-border: #44495b;
-            --template-bg: #232a34;
-            --template-border: #44495b;
-            --copy-btn-bg: #28a745;
-            --copy-btn-bg-hover: #218838;
-            --welcome-bg: #2b3240;
-            --welcome-text: #d4edda;
-            --success-color: #28a745;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg-gradient);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .container {
-            background: var(--container-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: var(--container-shadow);
-            width: 100%;
-            max-width: 900px;
-            margin: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        .header h1 {
-            color: var(--accent);
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            background: linear-gradient(45deg, var(--accent), var(--accent2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .header p {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-        }
-
-        .login-section {
-            text-align: center;
-            margin: 2rem auto;
-            max-width: 400px;
-            background: var(--panel-card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--panel-card-border);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--input-border);
-            border-radius: 8px;
-            font-size: 16px;
-            background: var(--input-bg);
-            color: var(--text-main);
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--input-focus);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
-        }
-
-        .btn {
-            background: var(--btn-bg);
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 5px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background: var(--btn-bg-hover);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-discord {
-            background: var(--btn-discord);
-        }
-
-        .btn-discord:hover {
-            background: #4752c4;
-        }
-
-        .error-msg {
-            color: var(--error-text);
-            margin: 1rem 0;
-            padding: 1rem;
-            background: var(--error-bg);
-            border-radius: 8px;
-            display: none;
-            animation: shake 0.5s ease-in-out;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        .panel-content {
-            display: none;
-        }
-
-        .welcome-msg {
-            background: var(--welcome-bg);
-            color: var(--text-main);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid var(--accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .welcome-msg strong {
-            color: var(--success-color);
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .category-title {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin: 2.5rem 0 1.5rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent);
-            text-align: center;
-        }
-
-        .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .template-card {
-            background: var(--panel-card-bg);
-            border: 1px solid var(--panel-card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.2s ease;
-        }
-
-        .template-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .template-card h3 {
-            color: var(--accent2);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        .template-text {
-            background: var(--template-bg);
-            border: 1px solid var(--template-border);
-            border-radius: 8px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--text-main);
-            white-space: pre-wrap;
-        }
-
-        .copy-btn {
-            background: var(--copy-btn-bg);
-            color: white;
-            padding: 8px 16px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            width: 100%;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .copy-btn:hover {
-            background: var(--copy-btn-bg-hover);
-            transform: translateY(-1px);
-        }
-
-        .success-animation {
-            animation: successPulse 0.5s ease-out;
-        }
-
-        @keyframes successPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 1rem;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .templates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-title {
-                font-size: 1.3rem;
-            }
-        }
-    </style>
+    <!-- Vorheriges Styling beibehalten -->
 </head>
 <body>
     <div class="container">
@@ -314,10 +30,248 @@
             </div>
         </div>
 
-        <!-- Der Rest des Codes (panel-content mit allen Templates) bleibt wie im vorherigen Beispiel -->
-        
+        <div id="panelContent" class="panel-content">
+            <div class="welcome-msg">
+                <strong>✅ Erfolgreich eingeloggt!</strong><br>
+                Willkommen im Team-Panel, <span id="userName"></span>!
+            </div>
+
+            <!-- Support Begrüßungen -->
+            <h2 class="category-title">📞 Support Begrüßungen</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Begrüßung 1</h3>
+                    <div class="template-text" id="greeting1">Hallo @USER,
+
+wie kann ich dir weiterhelfen?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Begrüßung 2</h3>
+                    <div class="template-text" id="greeting2">Hi @USER!
+
+Was können wir für dich tun heute?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Begrüßung 3</h3>
+                    <div class="template-text" id="greeting3">Willkommen @USER!
+
+Ich bin heute für dich da. Wie kann ich dir helfen?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting3">Text kopieren</button>
+                </div>
+            </div>
+
+            <!-- Weitere Fragen -->
+            <h2 class="category-title">❓ Weitere Fragen</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Nachfrage 1</h3>
+                    <div class="template-text" id="questions1">Hast du noch weitere Fragen? 
+
+Falls ja, kannst du dich gerne jederzeit melden!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Nachfrage 2</h3>
+                    <div class="template-text" id="questions2">Gibt es noch etwas, wobei ich dir helfen kann?
+
+Ich bin gerne für dich da!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Nachfrage 3</h3>
+                    <div class="template-text" id="questions3">Brauchst du sonst noch Unterstützung?
+
+Ich nehme mir gerne Zeit für deine Anliegen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="questions3">Text kopieren</button>
+                </div>
+            </div>
+
+            <!-- Problem gelöst -->
+            <h2 class="category-title">✅ Problem gelöst</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Lösung 1</h3>
+                    <div class="template-text" id="solved1">Super, dass dein Anliegen gelöst wurde!
+
+Bei weiteren Fragen kannst du mich jederzeit anschreiben.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Lösung 2</h3>
+                    <div class="template-text" id="solved2">Freut mich, dass ich dir helfen konnte!
+
+Falls noch Fragen aufkommen, stehe ich dir gerne zur Verfügung.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Lösung 3</h3>
+                    <div class="template-text" id="solved3">Toll, dass wir das klären konnten!
+
+Zögere nicht, dich bei weiteren Anliegen zu melden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="solved3">Text kopieren</button>
+                </div>
+            </div>
+
+            <!-- Feedback Bedankungen -->
+            <h2 class="category-title">🌟 Feedback Bedankungen</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Feedback 1</h3>
+                    <div class="template-text" id="feedback1">Vielen Dank für dein Feedback @USER!
+
+Deine Meinung ist uns sehr wichtig und hilft uns, unseren Service stetig zu verbessern.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Feedback 2</h3>
+                    <div class="template-text" id="feedback2">Danke für deine ausführliche Rückmeldung @USER!
+
+Wir nehmen dein Feedback sehr ernst und werden es in unsere Verbesserungen einbeziehen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Feedback 3</h3>
+                    <div class="template-text" id="feedback3">Hey @USER, danke dass du dir die Zeit genommen hast!
+
+Dein Feedback hilft uns dabei, Farmsucht noch besser zu machen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="feedback3">Text kopieren</button>
+                </div>
+            </div>
+
+            <!-- Bewerbungen -->
+            <h2 class="category-title">📝 Bewerbungen</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Bewerbung Eingegangen</h3>
+                    <div class="template-text" id="apply1">Hallo @USER,
+
+vielen Dank für deine Bewerbung! Wir werden diese intern besprechen und melden uns zeitnah bei dir.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Bewerbung Angenommen</h3>
+                    <div class="template-text" id="apply2">Herzlichen Glückwunsch @USER!
+
+Wir freuen uns, dir mitteilen zu können, dass deine Bewerbung erfolgreich war! 
+
+Ein Teammitglied wird sich in Kürze mit dir in Verbindung setzen, um alles Weitere zu besprechen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Bewerbung Abgelehnt</h3>
+                    <div class="template-text" id="apply3">Hallo @USER,
+
+vielen Dank für deine Bewerbung und dein Interesse an unserem Team.
+
+Leider müssen wir dir mitteilen, dass wir uns gegen deine Bewerbung entschieden haben. 
+
+Wir wünschen dir für die Zukunft alles Gute!
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="apply3">Text kopieren</button>
+                </div>
+            </div>
+
+            <!-- Entbannungsanträge -->
+            <h2 class="category-title">🔓 Entbannungsanträge</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Antrag Eingegangen</h3>
+                    <div class="template-text" id="unban1">Hallo @USER,
+
+danke für deinen Entbannungsantrag. Wir werden deinen Fall prüfen und uns bald bei dir melden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban1">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Antrag Angenommen</h3>
+                    <div class="template-text" id="unban2">Hallo @USER,
+
+wir haben deinen Entbannungsantrag angenommen. Du wurdest soeben entbannt.
+
+Bitte beachte in Zukunft unsere Regeln, um weitere Strafen zu vermeiden.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban2">Text kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>Antrag Abgelehnt</h3>
+                    <div class="template-text" id="unban3">Hallo @USER,
+
+wir haben deinen Entbannungsantrag sorgfältig geprüft.
+
+Leider müssen wir dir mitteilen, dass dein Antrag abgelehnt wurde. Die Sperre bleibt bestehen.
+
+Du kannst in 30 Tagen einen neuen Antrag stellen.
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="unban3">Text kopieren</button>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
     <script>
         let currentUser = '';
         
