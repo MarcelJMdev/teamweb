@@ -3,1084 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FarmSucht Team Panel</title>
+    <title>Farmsucht TEAM PANEL</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: #333;
-        }
-
-        .login-container {
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
+        
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f8f9fa;
-            min-height: 100vh;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
         }
-
+        
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
         }
-
+        
         .header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-
-        .header p {
-            font-size: 1.3rem;
-            opacity: 0.9;
+        
+        .login-section {
+            text-align: center;
+            margin-bottom: 2rem;
         }
-
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            border: 1px solid #e9ecef;
-        }
-
-        .login-card {
-            max-width: 450px;
-            width: 100%;
-            background: white;
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-        }
-
+        
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 1rem;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #495057;
-            font-size: 1.1rem;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
+        
+        .form-group input {
             width: 100%;
-            padding: 15px;
-            border: 2px solid #e9ecef;
-            border-radius: 12px;
+            max-width: 300px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             font-size: 16px;
-            background: #f8f9fa;
-            color: #495057;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s;
         }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        
+        .form-group input:focus {
             outline: none;
             border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
         }
-
+        
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
-            padding: 15px 30px;
+            padding: 12px 30px;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            transition: transform 0.2s;
             margin: 5px;
-            position: relative;
-            overflow: hidden;
         }
-
+        
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
-
-        .btn:active {
-            transform: translateY(0);
+        
+        .btn-discord {
+            background: #5865F2;
         }
-
-        .btn-success {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        }
-
-        .btn-success:hover {
-            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
-        }
-
-        .btn-danger {
-            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-        }
-
-        .btn-danger:hover {
-            box-shadow: 0 10px 25px rgba(220, 53, 69, 0.3);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-        }
-
-        .btn-secondary:hover {
-            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .nav-menu .btn {
-            padding: 12px 25px;
-            border-radius: 25px;
-        }
-
-        .user-info {
-            text-align: right;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 15px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .ticket-template {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            padding: 25px;
-            border-left: 5px solid #667eea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .ticket-template:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .ticket-template h3 {
-            color: #667eea;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .user-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
-            padding: 25px;
-            border-left: 5px solid #28a745;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .user-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .user-info-card {
-            flex-grow: 1;
-        }
-
-        .user-info-card strong {
-            font-size: 1.2rem;
-            color: #495057;
-        }
-
-        .user-actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .role-badge {
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-left: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .role-admin {
-            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
-            color: white;
-            box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
-        }
-
-        .role-moderator {
-            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
-            color: white;
-            box-shadow: 0 3px 10px rgba(253, 126, 20, 0.3);
-        }
-
-        .role-user {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
-            color: white;
-            box-shadow: 0 3px 10px rgba(108, 117, 125, 0.3);
-        }
-
-        .hidden {
+        
+        .error-msg {
+            color: #e74c3c;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #ffe6e6;
+            border-radius: 8px;
             display: none;
         }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+        
+        .panel-content {
+            display: none;
         }
-
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 90%;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        h2, h3 {
-            color: #495057;
-            margin-bottom: 20px;
-        }
-
-        .login-title {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #495057;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .error-message {
-            color: #dc3545;
-            margin-top: 15px;
-            text-align: center;
-            padding: 15px;
-            background: rgba(220, 53, 69, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(220, 53, 69, 0.3);
-            font-weight: 500;
-        }
-
-        .success-message {
-            color: #28a745;
-            margin-top: 15px;
-            text-align: center;
-            padding: 15px;
-            background: rgba(40, 167, 69, 0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(40, 167, 69, 0.3);
-            font-weight: 500;
-        }
-
-        .admin-stats {
+        
+        .templates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        
+        .template-card {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .template-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .template-text {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .copy-btn {
+            background: #28a745;
             color: white;
-            padding: 25px;
-            border-radius: 15px;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .copy-btn:hover {
+            background: #218838;
+        }
+        
+        .welcome-msg {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .stat-card h3 {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .stat-card p {
-            opacity: 0.9;
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            
-            .card, .login-card {
-                padding: 25px;
-            }
-            
-            .nav-menu {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .user-card {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .user-actions {
-                justify-content: center;
-            }
-
-            .admin-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animations */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            animation: slideIn 0.6s ease-out;
-        }
-
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
         }
     </style>
 </head>
 <body>
-    <!-- Login Page -->
-    <div id="loginPage" class="login-container">
-        <div class="login-card">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h1 style="color: #667eea; font-size: 2.5rem; margin-bottom: 10px;">FarmSucht</h1>
-                <p style="color: #6c757d; font-size: 1.2rem;">Team Panel</p>
-            </div>
-            <h2 class="login-title">Anmelden</h2>
-            <div class="form-group">
-                <label for="username">Benutzername:</label>
-                <input type="text" id="username" placeholder="Benutzername eingeben">
-            </div>
-            <div class="form-group">
-                <label for="password">Passwort:</label>
-                <input type="password" id="password" placeholder="Passwort eingeben">
-            </div>
-            <button class="btn btn-success" onclick="login()" style="width: 100%; padding: 18px; font-size: 18px;">Anmelden</button>
-            <div id="loginError" class="error-message hidden"></div>
-        </div>
-    </div>
-
-    <!-- Main Application -->
-    <div id="mainApp" class="container hidden">
+    <div class="container">
         <div class="header">
-            <h1>FarmSucht Team Panel</h1>
-            <p>Verwaltung & Ticket System</p>
+            <h1>🚜 FARMSUCHT TEAM PANEL</h1>
+            <p>Exklusiver Zugang für Team-Mitglieder</p>
         </div>
-
-        <div class="user-info">
-            <span style="font-size: 1.2rem;">👋 Willkommen, <span id="currentUser"></span></span>
-            <button class="btn btn-secondary" onclick="logout()" style="margin-left: 15px;">Abmelden</button>
-        </div>
-
-        <div class="nav-menu">
-            <button class="btn" onclick="showSection('tickets')">📋 Ticket Vorlagen</button>
-            <button class="btn" onclick="showSection('users')" id="userManagementBtn">👥 Benutzerverwaltung</button>
-            <button class="btn" onclick="showSection('profile')">⚙️ Profil</button>
-        </div>
-
-        <!-- Ticket Templates Section -->
-        <div id="ticketsSection" class="card">
-            <h2 style="margin-bottom: 30px; color: #667eea;">📋 Ticket Vorlagen</h2>
-            <button class="btn btn-success" onclick="showCreateTicketModal()">➕ Neue Vorlage erstellen</button>
+        
+        <div id="loginSection" class="login-section">
+            <div class="form-group">
+                <input type="text" id="nameInput" placeholder="Dein Name eingeben...">
+            </div>
+            <div class="form-group">
+                <input type="password" id="codeInput" placeholder="Team-Code eingeben...">
+            </div>
+            <button class="btn" onclick="checkAccess()">Zugang prüfen</button>
             
-            <div id="ticketTemplates" class="grid">
-                <!-- Ticket templates will be loaded here -->
+            <div id="errorMsg" class="error-msg">
+                <strong>❌ Falscher Code!</strong><br>
+                Hast du den richtigen Code eingegeben und bist du überhaupt im Farmsucht Team?<br>
+                Wenn ja, kannst du dich gerne im Discord bewerben:<br>
+                <button class="btn btn-discord" onclick="window.open('https://dsc.gg/farmsucht', '_blank')">
+                    Discord Server beitreten
+                </button>
             </div>
         </div>
-
-        <!-- User Management Section -->
-        <div id="usersSection" class="card hidden">
-            <h2 style="margin-bottom: 30px; color: #667eea;">👥 Benutzerverwaltung</h2>
+        
+        <div id="panelContent" class="panel-content">
+            <div class="welcome-msg">
+                <strong>✅ Erfolgreich eingeloggt!</strong><br>
+                Willkommen im Team-Panel, <span id="userName"></span>!
+            </div>
             
-            <!-- Admin Statistics -->
-            <div class="admin-stats">
-                <div class="stat-card">
-                    <h3 id="totalUsers">0</h3>
-                    <p>Benutzer gesamt</p>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>📞 Standard Support Begrüßung</h3>
+                    <div class="template-text" id="template1">Hallo @USER, wie kann ich dir weiterhelfen?
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template1')">Kopieren</button>
                 </div>
-                <div class="stat-card">
-                    <h3 id="totalAdmins">0</h3>
-                    <p>Administratoren</p>
+                
+                <div class="template-card">
+                    <h3>❓ Weitere Fragen</h3>
+                    <div class="template-text" id="template2">Hast du noch weitere Fragen? Falls ja, kannst du dich gerne jederzeit melden!
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template2')">Kopieren</button>
                 </div>
-                <div class="stat-card">
-                    <h3 id="totalModerators">0</h3>
-                    <p>Moderatoren</p>
+                
+                <div class="template-card">
+                    <h3>✅ Problem gelöst</h3>
+                    <div class="template-text" id="template3">Freut mich, dass ich dir helfen konnte! Falls du noch weitere Fragen hast, melde dich gerne.
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template3')">Kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>🔄 Weiterleitung an Team</h3>
+                    <div class="template-text" id="template4">Ich kann dir bei diesem Problem leider nicht weiterhelfen. Ich leite dich an einen anderen Teamler weiter, der sich um dein Anliegen kümmern wird.
+
+Bitte hab etwas Geduld!
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template4')">Kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>⏰ Warten auf Antwort</h3>
+                    <div class="template-text" id="template5">Ich schaue mir dein Anliegen an. Bitte hab einen Moment Geduld, ich melde mich gleich bei dir!
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template5')">Kopieren</button>
+                </div>
+                
+                <div class="template-card">
+                    <h3>📋 Ticket schließen</h3>
+                    <div class="template-text" id="template6">Dein Anliegen wurde erfolgreich bearbeitet. Das Ticket wird nun geschlossen. Bei weiteren Fragen erstelle gerne ein neues Ticket!
+
+MfG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" onclick="copyTemplate('template6')">Kopieren</button>
                 </div>
             </div>
-
-            <button class="btn btn-success" onclick="showCreateUserModal()">➕ Neuen Benutzer erstellen</button>
-            
-            <div id="userList" style="margin-top: 30px;">
-                <!-- Users will be loaded here -->
-            </div>
-        </div>
-
-        <!-- Profile Section -->
-        <div id="profileSection" class="card hidden">
-            <h2 style="margin-bottom: 30px; color: #667eea;">⚙️ Mein Profil</h2>
-            <div class="form-group">
-                <label>Benutzername:</label>
-                <input type="text" id="profileUsername" readonly style="background: #e9ecef;">
-            </div>
-            <div class="form-group">
-                <label>Rolle:</label>
-                <input type="text" id="profileRole" readonly style="background: #e9ecef;">
-            </div>
-            <div class="form-group">
-                <label>Neues Passwort:</label>
-                <input type="password" id="newPassword" placeholder="Neues Passwort eingeben">
-            </div>
-            <button class="btn btn-success" onclick="changePassword()">🔐 Passwort ändern</button>
-            <div id="passwordSuccess" class="success-message hidden"></div>
         </div>
     </div>
-
-    <!-- Create Ticket Template Modal -->
-    <div id="createTicketModal" class="modal hidden">
-        <div class="modal-content">
-            <h3 style="margin-bottom: 30px; color: #667eea;">📋 Neue Ticket Vorlage erstellen</h3>
-            <div class="form-group">
-                <label>Titel:</label>
-                <input type="text" id="ticketTitle" placeholder="Ticket Titel">
-            </div>
-            <div class="form-group">
-                <label>Kategorie:</label>
-                <select id="ticketCategory">
-                    <option value="Bug Report">🐛 Bug Report</option>
-                    <option value="Feature Request">⭐ Feature Request</option>
-                    <option value="Support">🆘 Support</option>
-                    <option value="Sonstiges">📝 Sonstiges</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Priorität:</label>
-                <select id="ticketPriority">
-                    <option value="Niedrig">🟢 Niedrig</option>
-                    <option value="Normal">🟡 Normal</option>
-                    <option value="Hoch">🟠 Hoch</option>
-                    <option value="Kritisch">🔴 Kritisch</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Beschreibung:</label>
-                <textarea id="ticketDescription" rows="4" placeholder="Beschreibung der Vorlage"></textarea>
-            </div>
-            <div class="form-group">
-                <label>Standardtext:</label>
-                <textarea id="ticketTemplate" rows="6" placeholder="Standard Template Text"></textarea>
-            </div>
-            <div>
-                <button class="btn btn-success" onclick="createTicketTemplate()">✅ Erstellen</button>
-                <button class="btn btn-secondary" onclick="hideCreateTicketModal()">❌ Abbrechen</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Create User Modal -->
-    <div id="createUserModal" class="modal hidden">
-        <div class="modal-content">
-            <h3 style="margin-bottom: 30px; color: #667eea;">👤 Neuen Benutzer erstellen</h3>
-            <div class="form-group">
-                <label>Benutzername:</label>
-                <input type="text" id="newUsername" placeholder="Benutzername">
-            </div>
-            <div class="form-group">
-                <label>Passwort:</label>
-                <input type="password" id="newUserPassword" placeholder="Passwort">
-            </div>
-            <div class="form-group">
-                <label>Rolle:</label>
-                <select id="newUserRole">
-                    <option value="user">👤 Benutzer</option>
-                    <option value="moderator">🛡️ Moderator</option>
-                    <option value="admin">👑 Administrator</option>
-                </select>
-            </div>
-            <div>
-                <button class="btn btn-success" onclick="createUser()">✅ Erstellen</button>
-                <button class="btn btn-secondary" onclick="hideCreateUserModal()">❌ Abbrechen</button>
-            </div>
-            <div id="userCreateError" class="error-message hidden"></div>
-        </div>
-    </div>
-
-    <!-- Edit User Modal -->
-    <div id="editUserModal" class="modal hidden">
-        <div class="modal-content">
-            <h3 style="margin-bottom: 30px; color: #667eea;">👤 Benutzer bearbeiten</h3>
-            <div class="form-group">
-                <label>Benutzername:</label>
-                <input type="text" id="editUsername" readonly style="background: #e9ecef;">
-            </div>
-            <div class="form-group">
-                <label>Neue Rolle:</label>
-                <select id="editUserRole">
-                    <option value="user">👤 Benutzer</option>
-                    <option value="moderator">🛡️ Moderator</option>
-                    <option value="admin">👑 Administrator</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Neues Passwort (optional):</label>
-                <input type="password" id="editUserPassword" placeholder="Leer lassen um beizubehalten">
-            </div>
-            <div>
-                <button class="btn btn-success" onclick="saveUserChanges()">✅ Speichern</button>
-                <button class="btn btn-secondary" onclick="hideEditUserModal()">❌ Abbrechen</button>
-            </div>
-            <div id="userEditError" class="error-message hidden"></div>
-        </div>
-    </div>
-
+    
     <script>
-        // Data Storage
-        let users = {
-            'marcel': {
-                password: 'marcel09',
-                role: 'admin'
-            }
-        };
-
-        let ticketTemplates = [
-            {
-                id: 1,
-                title: 'Server Problem',
-                category: 'Bug Report',
-                priority: 'Hoch',
-                description: 'Vorlage für Server-bezogene Probleme',
-                template: 'Server: [SERVER_NAME]\nProblem: [BESCHREIBUNG]\nFehlermeldung: [ERROR_MESSAGE]\nZeitpunkt: [TIMESTAMP]'
-            },
-            {
-                id: 2,
-                title: 'Feature Anfrage',
-                category: 'Feature Request',
-                priority: 'Normal',
-                description: 'Standard Vorlage für neue Features',
-                template: 'Feature: [FEATURE_NAME]\nBeschreibung: [FEATURE_DESCRIPTION]\nNutzen: [BENEFIT]\nPriorität: [PRIORITY]'
-            }
-        ];
-
-        let currentUser = null;
-        let currentSection = 'tickets';
-        let editingUser = null;
-
-        // Initialize app
-        function init() {
-            showLoginPage();
-        }
-
-        function showLoginPage() {
-            document.getElementById('loginPage').classList.remove('hidden');
-            document.getElementById('mainApp').classList.add('hidden');
-        }
-
-        function showMainApp() {
-            document.getElementById('loginPage').classList.add('hidden');
-            document.getElementById('mainApp').classList.remove('hidden');
-        }
-
-        function login() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
-            const errorDiv = document.getElementById('loginError');
-
-            if (!username || !password) {
-                errorDiv.textContent = 'Bitte alle Felder ausfüllen!';
-                errorDiv.classList.remove('hidden');
+        let currentUser = '';
+        
+        function checkAccess() {
+            const name = document.getElementById('nameInput').value.trim();
+            const code = document.getElementById('codeInput').value.trim();
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (!name) {
+                alert('Bitte gib deinen Namen ein!');
                 return;
             }
-
-            if (users[username] && users[username].password === password) {
-                currentUser = {
-                    username: username,
-                    role: users[username].role
-                };
-                showMainApp();
-                document.getElementById('currentUser').textContent = currentUser.username;
-                errorDiv.classList.add('hidden');
+            
+            if (code === 'farmsucht2022') {
+                currentUser = name;
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('panelContent').style.display = 'block';
+                document.getElementById('userName').textContent = name;
                 
-                // Hide user management for non-admins
-                if (currentUser.role !== 'admin') {
-                    document.getElementById('userManagementBtn').style.display = 'none';
-                } else {
-                    document.getElementById('userManagementBtn').style.display = 'inline-block';
-                }
+                // Namen in allen Vorlagen ersetzen
+                const placeholders = document.querySelectorAll('.username-placeholder');
+                placeholders.forEach(placeholder => {
+                    placeholder.textContent = name;
+                });
                 
-                showSection('tickets');
-                updateProfile();
-                clearLoginForm();
+                errorMsg.style.display = 'none';
             } else {
-                errorDiv.textContent = 'Ungültiger Benutzername oder Passwort!';
-                errorDiv.classList.remove('hidden');
+                errorMsg.style.display = 'block';
             }
         }
-
-        function clearLoginForm() {
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-        }
-
-        function logout() {
-            currentUser = null;
-            clearLoginForm();
-            document.getElementById('loginError').classList.add('hidden');
-            showLoginPage();
-        }
-
-        function showSection(section) {
-            // Hide all sections
-            document.getElementById('ticketsSection').classList.add('hidden');
-            document.getElementById('usersSection').classList.add('hidden');
-            document.getElementById('profileSection').classList.add('hidden');
+        
+        function copyTemplate(templateId) {
+            const templateText = document.getElementById(templateId).textContent;
             
-            // Show selected section
-            document.getElementById(section + 'Section').classList.remove('hidden');
-            currentSection = section;
-            
-            // Load section data
-            if (section === 'tickets') {
-                loadTicketTemplates();
-            } else if (section === 'users') {
-                loadUsers();
-                updateUserStats();
-            }
-        }
-
-        function loadTicketTemplates() {
-            const container = document.getElementById('ticketTemplates');
-            container.innerHTML = '';
-            
-            if (ticketTemplates.length === 0) {
-                container.appendChild(userDiv);
+            navigator.clipboard.writeText(templateText).then(function() {
+                // Temporäre Bestätigung anzeigen
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Kopiert!';
+                btn.style.background = '#20c997';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#28a745';
+                }, 2000);
+            }).catch(function(err) {
+                alert('Fehler beim Kopieren: ' + err);
             });
         }
-
-        function getRoleDisplayName(role) {
-            const roleNames = {
-                'admin': 'Administrator',
-                'moderator': 'Moderator',
-                'user': 'Benutzer'
-            };
-            return roleNames[role] || role;
-        }
-
-        function showCreateTicketModal() {
-            document.getElementById('createTicketModal').classList.remove('hidden');
-        }
-
-        function hideCreateTicketModal() {
-            document.getElementById('createTicketModal').classList.add('hidden');
-            // Clear form
-            document.getElementById('ticketTitle').value = '';
-            document.getElementById('ticketDescription').value = '';
-            document.getElementById('ticketTemplate').value = '';
-        }
-
-        function createTicketTemplate() {
-            const title = document.getElementById('ticketTitle').value.trim();
-            const category = document.getElementById('ticketCategory').value;
-            const priority = document.getElementById('ticketPriority').value;
-            const description = document.getElementById('ticketDescription').value.trim();
-            const template = document.getElementById('ticketTemplate').value.trim();
-            
-            if (!title || !description || !template) {
-                alert('Bitte alle Pflichtfelder ausfüllen!');
-                return;
-            }
-            
-            const newTemplate = {
-                id: Date.now(),
-                title: title,
-                category: category,
-                priority: priority,
-                description: description,
-                template: template
-            };
-            
-            ticketTemplates.push(newTemplate);
-            hideCreateTicketModal();
-            if (currentSection === 'tickets') {
-                loadTicketTemplates();
-            }
-        }
-
-        function viewTemplate(id) {
-            const template = ticketTemplates.find(t => t.id === id);
-            if (template) {
-                const categoryIcon = {
-                    'Bug Report': '🐛',
-                    'Feature Request': '⭐',
-                    'Support': '🆘',
-                    'Sonstiges': '📝'
-                };
-                
-                const priorityIcon = {
-                    'Niedrig': '🟢',
-                    'Normal': '🟡',
-                    'Hoch': '🟠',
-                    'Kritisch': '🔴'
-                };
-                
-                alert(`${categoryIcon[template.category]} ${template.title}\n\n📝 Kategorie: ${template.category}\n${priorityIcon[template.priority]} Priorität: ${template.priority}\n\n📋 Standardtext:\n${template.template}`);
-            }
-        }
-
-        function deleteTemplate(id) {
-            if (confirm('🗑️ Sind Sie sicher, dass Sie diese Vorlage löschen möchten?')) {
-                ticketTemplates = ticketTemplates.filter(t => t.id !== id);
-                if (currentSection === 'tickets') {
-                    loadTicketTemplates();
-                }
-            }
-        }
-
-        function showCreateUserModal() {
-            if (currentUser.role !== 'admin') {
-                alert('❌ Sie haben keine Berechtigung, Benutzer zu erstellen!');
-                return;
-            }
-            document.getElementById('createUserModal').classList.remove('hidden');
-        }
-
-        function hideCreateUserModal() {
-            document.getElementById('createUserModal').classList.add('hidden');
-            // Clear form
-            document.getElementById('newUsername').value = '';
-            document.getElementById('newUserPassword').value = '';
-            document.getElementById('newUserRole').value = 'user';
-            document.getElementById('userCreateError').classList.add('hidden');
-        }
-
-        function createUser() {
-            if (currentUser.role !== 'admin') {
-                alert('❌ Sie haben keine Berechtigung!');
-                return;
-            }
-
-            const username = document.getElementById('newUsername').value.trim();
-            const password = document.getElementById('newUserPassword').value;
-            const role = document.getElementById('newUserRole').value;
-            const errorDiv = document.getElementById('userCreateError');
-            
-            if (!username || !password) {
-                errorDiv.textContent = 'Bitte alle Felder ausfüllen!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            if (username.length < 3) {
-                errorDiv.textContent = 'Benutzername muss mindestens 3 Zeichen lang sein!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            if (password.length < 5) {
-                errorDiv.textContent = 'Passwort muss mindestens 5 Zeichen lang sein!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            if (users[username]) {
-                errorDiv.textContent = 'Benutzer existiert bereits!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            users[username] = {
-                password: password,
-                role: role
-            };
-            
-            hideCreateUserModal();
-            if (currentSection === 'users') {
-                loadUsers();
-                updateUserStats();
-            }
-        }
-
-        function editUser(username) {
-            if (currentUser.role !== 'admin') return;
-            
-            editingUser = username;
-            document.getElementById('editUsername').value = username;
-            document.getElementById('editUserRole').value = users[username].role;
-            document.getElementById('editUserPassword').value = '';
-            document.getElementById('userEditError').classList.add('hidden');
-            document.getElementById('editUserModal').classList.remove('hidden');
-        }
-
-        function hideEditUserModal() {
-            document.getElementById('editUserModal').classList.add('hidden');
-            editingUser = null;
-            document.getElementById('userEditError').classList.add('hidden');
-        }
-
-        function saveUserChanges() {
-            if (!editingUser || currentUser.role !== 'admin') return;
-            
-            const newRole = document.getElementById('editUserRole').value;
-            const newPassword = document.getElementById('editUserPassword').value.trim();
-            const errorDiv = document.getElementById('userEditError');
-            
-            // Don't allow changing marcel's role away from admin
-            if (editingUser === 'marcel' && newRole !== 'admin') {
-                errorDiv.textContent = 'Die Rolle des Hauptadministrators kann nicht geändert werden!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            if (newPassword && newPassword.length < 5) {
-                errorDiv.textContent = 'Neues Passwort muss mindestens 5 Zeichen lang sein!';
-                errorDiv.classList.remove('hidden');
-                return;
-            }
-            
-            // Update role
-            users[editingUser].role = newRole;
-            
-            // Update password if provided
-            if (newPassword) {
-                users[editingUser].password = newPassword;
-            }
-            
-            hideEditUserModal();
-            if (currentSection === 'users') {
-                loadUsers();
-                updateUserStats();
-            }
-        }
-
-        function deleteUser(username) {
-            if (currentUser.role !== 'admin' || username === 'marcel') return;
-            
-            if (confirm(`🗑️ Benutzer "${username}" wirklich löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden!`)) {
-                delete users[username];
-                if (currentSection === 'users') {
-                    loadUsers();
-                    updateUserStats();
-                }
-            }
-        }
-
-        function updateProfile() {
-            document.getElementById('profileUsername').value = currentUser.username;
-            document.getElementById('profileRole').value = getRoleDisplayName(currentUser.role);
-        }
-
-        function changePassword() {
-            const newPassword = document.getElementById('newPassword').value.trim();
-            const successDiv = document.getElementById('passwordSuccess');
-            
-            if (!newPassword) {
-                alert('❌ Bitte neues Passwort eingeben!');
-                return;
-            }
-            
-            if (newPassword.length < 5) {
-                alert('❌ Passwort muss mindestens 5 Zeichen lang sein!');
-                return;
-            }
-            
-            users[currentUser.username].password = newPassword;
-            document.getElementById('newPassword').value = '';
-            successDiv.textContent = '✅ Passwort erfolgreich geändert!';
-            successDiv.classList.remove('hidden');
-            
-            setTimeout(() => {
-                successDiv.classList.add('hidden');
-            }, 4000);
-        }
-
-        // Event listeners
+        
+        // Enter-Taste für Login
         document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                if (!document.getElementById('loginPage').classList.contains('hidden')) {
-                    login();
-                }
+            if (e.key === 'Enter' && document.getElementById('loginSection').style.display !== 'none') {
+                checkAccess();
             }
         });
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                if (!document.getElementById('createTicketModal').classList.contains('hidden')) {
-                    hideCreateTicketModal();
-                }
-                if (!document.getElementById('createUserModal').classList.contains('hidden')) {
-                    hideCreateUserModal();
-                }
-                if (!document.getElementById('editUserModal').classList.contains('hidden')) {
-                    hideEditUserModal();
-                }
-            }
-        });
-
-        // Initialize app
-        init();
     </script>
 </body>
-</html>innerHTML = '<p style="text-align: center; color: #6c757d; font-size: 1.1rem; margin-top: 30px;">Noch keine Ticket-Vorlagen vorhanden. Erstellen Sie die erste Vorlage!</p>';
-                return;
-            }
-            
-            ticketTemplates.forEach(template => {
-                const templateDiv = document.createElement('div');
-                templateDiv.className = 'ticket-template';
-                
-                const priorityIcon = {
-                    'Niedrig': '🟢',
-                    'Normal': '🟡',
-                    'Hoch': '🟠',
-                    'Kritisch': '🔴'
-                };
-                
-                const categoryIcon = {
-                    'Bug Report': '🐛',
-                    'Feature Request': '⭐',
-                    'Support': '🆘',
-                    'Sonstiges': '📝'
-                };
-                
-                templateDiv.innerHTML = `
-                    <h3>${categoryIcon[template.category] || '📝'} ${template.title}</h3>
-                    <p><strong>Kategorie:</strong> ${template.category}</p>
-                    <p><strong>Priorität:</strong> ${priorityIcon[template.priority]} ${template.priority}</p>
-                    <p><strong>Beschreibung:</strong> ${template.description}</p>
-                    <div style="margin-top: 20px;">
-                        <button class="btn btn-secondary" onclick="viewTemplate(${template.id})">👁️ Anzeigen</button>
-                        <button class="btn btn-danger" onclick="deleteTemplate(${template.id})">🗑️ Löschen</button>
-                    </div>
-                `;
-                container.appendChild(templateDiv);
-            });
-        }
-
-        function updateUserStats() {
-            const totalUsers = Object.keys(users).length;
-            const totalAdmins = Object.values(users).filter(u => u.role === 'admin').length;
-            const totalModerators = Object.values(users).filter(u => u.role === 'moderator').length;
-            
-            document.getElementById('totalUsers').textContent = totalUsers;
-            document.getElementById('totalAdmins').textContent = totalAdmins;
-            document.getElementById('totalModerators').textContent = totalModerators;
-        }
-
-        function loadUsers() {
-            if (currentUser.role !== 'admin') return;
-            
-            const container = document.getElementById('userList');
-            container.innerHTML = '';
-            
-            Object.keys(users).forEach(username => {
-                const user = users[username];
-                const userDiv = document.createElement('div');
-                userDiv.className = 'user-card';
-                
-                const roleIcon = {
-                    'admin': '👑',
-                    'moderator': '🛡️',
-                    'user': '👤'
-                };
-                
-                userDiv.innerHTML = `
-                    <div class="user-info-card">
-                        <strong>${roleIcon[user.role]} ${username}</strong>
-                        <span class="role-badge role-${user.role}">${getRoleDisplayName(user.role)}</span>
-                    </div>
-                    <div class="user-actions">
-                        <button class="btn btn-secondary" onclick="editUser('${username}')">✏️ Bearbeiten</button>
-                        ${username !== 'marcel' ? `<button class="btn btn-danger" onclick="deleteUser('${username}')">🗑️ Löschen</button>` : ''}
-                    </div>
-                `;
-                container.
+</html>
