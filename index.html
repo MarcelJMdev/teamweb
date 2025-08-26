@@ -13,9 +13,9 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0d1117;
             min-height: 100vh;
-            color: #333;
+            color: #c9d1d9;
         }
 
         .container {
@@ -27,21 +27,26 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
-            color: white;
+            color: #58a6ff;
         }
 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        }
+
+        .header p {
+            color: #8b949e;
+            font-size: 1.1rem;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: #161b22;
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+            border: 1px solid #21262d;
             margin-bottom: 20px;
         }
 
@@ -58,51 +63,65 @@
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
-            color: #555;
+            color: #c9d1d9;
         }
 
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
             font-size: 16px;
+            background: #0d1117;
+            color: #c9d1d9;
             transition: border-color 0.3s ease;
         }
 
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #238636;
             color: white;
             padding: 12px 30px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: background-color 0.2s ease;
             margin: 5px;
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            background: #2ea043;
         }
 
         .btn-secondary {
-            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            background: #6e7681;
+        }
+
+        .btn-secondary:hover {
+            background: #7d8590;
         }
 
         .btn-danger {
-            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            background: #da3633;
+        }
+
+        .btn-danger:hover {
+            background: #f85149;
         }
 
         .btn-success {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            background: #238636;
+        }
+
+        .btn-success:hover {
+            background: #2ea043;
         }
 
         .nav-menu {
@@ -116,7 +135,7 @@
         .user-info {
             text-align: right;
             margin-bottom: 20px;
-            color: white;
+            color: #58a6ff;
             font-weight: 600;
         }
 
@@ -128,22 +147,24 @@
         }
 
         .ticket-template {
-            background: #f8f9fa;
-            border-radius: 10px;
+            background: #21262d;
+            border-radius: 8px;
             padding: 20px;
-            border-left: 4px solid #667eea;
+            border-left: 4px solid #58a6ff;
+            border: 1px solid #30363d;
         }
 
         .ticket-template h3 {
-            color: #667eea;
+            color: #58a6ff;
             margin-bottom: 10px;
         }
 
         .user-card {
-            background: #f8f9fa;
-            border-radius: 10px;
+            background: #21262d;
+            border-radius: 8px;
             padding: 20px;
-            border-left: 4px solid #28a745;
+            border-left: 4px solid #238636;
+            border: 1px solid #30363d;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -168,17 +189,17 @@
         }
 
         .role-admin {
-            background: #dc3545;
+            background: #da3633;
             color: white;
         }
 
         .role-moderator {
-            background: #ffc107;
-            color: #333;
+            background: #fb8500;
+            color: white;
         }
 
         .role-user {
-            background: #6c757d;
+            background: #6e7681;
             color: white;
         }
 
@@ -192,7 +213,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -200,13 +221,54 @@
         }
 
         .modal-content {
-            background: white;
+            background: #161b22;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
             max-width: 500px;
             width: 90%;
             max-height: 90%;
             overflow-y: auto;
+            border: 1px solid #30363d;
+        }
+
+        h2, h3 {
+            color: #58a6ff;
+        }
+
+        .login-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #58a6ff;
+            font-size: 1.8rem;
+        }
+
+        .error-message {
+            color: #f85149;
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px;
+            background: rgba(248, 81, 73, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(248, 81, 73, 0.3);
+        }
+
+        .success-message {
+            color: #56d364;
+            margin-top: 10px;
+            text-align: center;
+            padding: 10px;
+            background: rgba(86, 211, 100, 0.1);
+            border-radius: 6px;
+            border: 1px solid rgba(86, 211, 100, 0.3);
+        }
+
+        .login-container {
+            background: #0d1117;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
 
         @media (max-width: 768px) {
@@ -240,16 +302,14 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🚜 FarmSucht Team Panel</h1>
-            <p>Ticket-Vorlagen Verwaltung</p>
-        </div>
-
-        <!-- Login Section -->
-        <div id="loginSection" class="card">
+    <div id="loginPage" class="login-container">
+        <div class="card" style="max-width: 400px; width: 100%;">
+            <div class="header">
+                <h1>FarmSucht Team Panel</h1>
+                <p>Ticket-Vorlagen Verwaltung</p>
+            </div>
             <div class="login-form">
-                <h2 style="text-align: center; margin-bottom: 30px; color: #667eea;">Anmelden</h2>
+                <h2 class="login-title">Anmelden</h2>
                 <div class="form-group">
                     <label for="username">Benutzername:</label>
                     <input type="text" id="username" placeholder="Benutzername eingeben">
@@ -258,28 +318,35 @@
                     <label for="password">Passwort:</label>
                     <input type="password" id="password" placeholder="Passwort eingeben">
                 </div>
-                <button class="btn" onclick="login()" style="width: 100%;">Anmelden</button>
-                <div id="loginError" style="color: #dc3545; margin-top: 10px; text-align: center;"></div>
+                <button class="btn btn-success" onclick="login()" style="width: 100%;">Anmelden</button>
+                <div id="loginError" class="error-message hidden"></div>
             </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="container hidden">
+        <div class="header">
+            <h1>FarmSucht Team Panel</h1>
+            <p>Ticket-Vorlagen Verwaltung</p>
         </div>
 
         <!-- Main Panel -->
-        <div id="mainPanel" class="hidden">
+        <div id="mainPanel">
             <div class="user-info">
                 Angemeldet als: <span id="currentUser"></span>
                 <button class="btn btn-secondary" onclick="logout()" style="margin-left: 10px;">Abmelden</button>
             </div>
 
             <div class="nav-menu">
-                <button class="btn" onclick="showSection('tickets')">📋 Ticket Vorlagen</button>
-                <button class="btn" onclick="showSection('users')" id="userManagementBtn">👥 Benutzerverwaltung</button>
-                <button class="btn" onclick="showSection('profile')">⚙️ Profil</button>
+                <button class="btn" onclick="showSection('tickets')">Ticket Vorlagen</button>
+                <button class="btn" onclick="showSection('users')" id="userManagementBtn">Benutzerverwaltung</button>
+                <button class="btn" onclick="showSection('profile')">Profil</button>
             </div>
 
             <!-- Ticket Templates Section -->
             <div id="ticketsSection" class="card">
-                <h2 style="color: #667eea; margin-bottom: 20px;">📋 Ticket Vorlagen</h2>
-                <button class="btn btn-success" onclick="showCreateTicketModal()">+ Neue Vorlage erstellen</button>
+                <h2 style="margin-bottom: 20px;">Ticket Vorlagen</h2>
+                <button class="btn btn-success" onclick="showCreateTicketModal()">Neue Vorlage erstellen</button>
                 
                 <div id="ticketTemplates" class="grid" style="margin-top: 20px;">
                     <!-- Ticket templates will be loaded here -->
@@ -288,8 +355,8 @@
 
             <!-- User Management Section -->
             <div id="usersSection" class="card hidden">
-                <h2 style="color: #667eea; margin-bottom: 20px;">👥 Benutzerverwaltung</h2>
-                <button class="btn btn-success" onclick="showCreateUserModal()">+ Benutzer erstellen</button>
+                <h2 style="margin-bottom: 20px;">Benutzerverwaltung</h2>
+                <button class="btn btn-success" onclick="showCreateUserModal()">Benutzer erstellen</button>
                 
                 <div id="userList" style="margin-top: 20px;">
                     <!-- Users will be loaded here -->
@@ -298,7 +365,7 @@
 
             <!-- Profile Section -->
             <div id="profileSection" class="card hidden">
-                <h2 style="color: #667eea; margin-bottom: 20px;">⚙️ Profil</h2>
+                <h2 style="margin-bottom: 20px;">Profil</h2>
                 <div class="form-group">
                     <label>Benutzername:</label>
                     <input type="text" id="profileUsername" readonly>
@@ -311,7 +378,8 @@
                     <label>Neues Passwort:</label>
                     <input type="password" id="newPassword" placeholder="Neues Passwort eingeben">
                 </div>
-                <button class="btn" onclick="changePassword()">Passwort ändern</button>
+                <button class="btn btn-success" onclick="changePassword()">Passwort ändern</button>
+                <div id="passwordSuccess" class="success-message hidden"></div>
             </div>
         </div>
     </div>
@@ -319,7 +387,7 @@
     <!-- Create Ticket Template Modal -->
     <div id="createTicketModal" class="modal hidden">
         <div class="modal-content">
-            <h3 style="color: #667eea; margin-bottom: 20px;">Neue Ticket Vorlage erstellen</h3>
+            <h3 style="margin-bottom: 20px;">Neue Ticket Vorlage erstellen</h3>
             <div class="form-group">
                 <label>Titel:</label>
                 <input type="text" id="ticketTitle" placeholder="Ticket Titel">
@@ -360,7 +428,7 @@
     <!-- Create User Modal -->
     <div id="createUserModal" class="modal hidden">
         <div class="modal-content">
-            <h3 style="color: #667eea; margin-bottom: 20px;">Neuen Benutzer erstellen</h3>
+            <h3 style="margin-bottom: 20px;">Neuen Benutzer erstellen</h3>
             <div class="form-group">
                 <label>Benutzername:</label>
                 <input type="text" id="newUsername" placeholder="Benutzername">
@@ -381,11 +449,12 @@
                 <button class="btn btn-success" onclick="createUser()">Erstellen</button>
                 <button class="btn btn-secondary" onclick="hideCreateUserModal()">Abbrechen</button>
             </div>
+            <div id="userCreateError" class="error-message hidden"></div>
         </div>
     </div>
 
     <script>
-        // Data Storage (in real app, this would be a backend database)
+        // Data Storage
         let users = {
             'marcel': {
                 password: 'marcel09',
@@ -417,15 +486,17 @@
 
         // Initialize app
         function init() {
-            checkAuth();
+            showLoginPage();
         }
 
-        function checkAuth() {
-            if (currentUser) {
-                showMainPanel();
-            } else {
-                showLoginSection();
-            }
+        function showLoginPage() {
+            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById('mainApp').classList.add('hidden');
+        }
+
+        function showMainApp() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
         }
 
         function login() {
@@ -433,44 +504,42 @@
             const password = document.getElementById('password').value;
             const errorDiv = document.getElementById('loginError');
 
+            if (!username || !password) {
+                errorDiv.textContent = 'Bitte alle Felder ausfüllen!';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
             if (users[username] && users[username].password === password) {
                 currentUser = {
                     username: username,
                     role: users[username].role
                 };
-                showMainPanel();
-                errorDiv.textContent = '';
+                showMainApp();
+                document.getElementById('currentUser').textContent = currentUser.username;
+                errorDiv.classList.add('hidden');
+                
+                // Hide user management for non-admins
+                if (currentUser.role !== 'admin') {
+                    document.getElementById('userManagementBtn').style.display = 'none';
+                } else {
+                    document.getElementById('userManagementBtn').style.display = 'inline-block';
+                }
+                
+                showSection('tickets');
+                updateProfile();
             } else {
-                errorDiv.textContent = 'Ungültige Anmeldedaten!';
+                errorDiv.textContent = 'Ungültiger Benutzername oder Passwort!';
+                errorDiv.classList.remove('hidden');
             }
         }
 
         function logout() {
             currentUser = null;
-            showLoginSection();
-        }
-
-        function showLoginSection() {
-            document.getElementById('loginSection').classList.remove('hidden');
-            document.getElementById('mainPanel').classList.add('hidden');
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-        }
-
-        function showMainPanel() {
-            document.getElementById('loginSection').classList.add('hidden');
-            document.getElementById('mainPanel').classList.remove('hidden');
-            document.getElementById('currentUser').textContent = currentUser.username;
-            
-            // Hide user management for non-admins
-            if (currentUser.role !== 'admin') {
-                document.getElementById('userManagementBtn').style.display = 'none';
-            } else {
-                document.getElementById('userManagementBtn').style.display = 'inline-block';
-            }
-            
-            showSection('tickets');
-            updateProfile();
+            document.getElementById('loginError').classList.add('hidden');
+            showLoginPage();
         }
 
         function showSection(section) {
@@ -504,8 +573,8 @@
                     <p><strong>Priorität:</strong> ${template.priority}</p>
                     <p><strong>Beschreibung:</strong> ${template.description}</p>
                     <div style="margin-top: 15px;">
-                        <button class="btn btn-secondary" onclick="viewTemplate(${template.id})">👁️ Anzeigen</button>
-                        <button class="btn btn-danger" onclick="deleteTemplate(${template.id})">🗑️ Löschen</button>
+                        <button class="btn btn-secondary" onclick="viewTemplate(${template.id})">Anzeigen</button>
+                        <button class="btn btn-danger" onclick="deleteTemplate(${template.id})">Löschen</button>
                     </div>
                 `;
                 container.appendChild(templateDiv);
@@ -598,7 +667,10 @@
         }
 
         function showCreateUserModal() {
-            if (currentUser.role !== 'admin') return;
+            if (currentUser.role !== 'admin') {
+                alert('Sie haben keine Berechtigung, Benutzer zu erstellen!');
+                return;
+            }
             document.getElementById('createUserModal').classList.remove('hidden');
         }
 
@@ -608,20 +680,29 @@
             document.getElementById('newUsername').value = '';
             document.getElementById('newUserPassword').value = '';
             document.getElementById('newUserRole').value = 'user';
+            document.getElementById('userCreateError').classList.add('hidden');
         }
 
         function createUser() {
+            if (currentUser.role !== 'admin') {
+                alert('Sie haben keine Berechtigung!');
+                return;
+            }
+
             const username = document.getElementById('newUsername').value;
             const password = document.getElementById('newUserPassword').value;
             const role = document.getElementById('newUserRole').value;
+            const errorDiv = document.getElementById('userCreateError');
             
             if (!username || !password) {
-                alert('Bitte Benutzername und Passwort eingeben!');
+                errorDiv.textContent = 'Bitte alle Felder ausfüllen!';
+                errorDiv.classList.remove('hidden');
                 return;
             }
             
             if (users[username]) {
-                alert('Benutzer existiert bereits!');
+                errorDiv.textContent = 'Benutzer existiert bereits!';
+                errorDiv.classList.remove('hidden');
                 return;
             }
             
@@ -660,6 +741,8 @@
 
         function changePassword() {
             const newPassword = document.getElementById('newPassword').value;
+            const successDiv = document.getElementById('passwordSuccess');
+            
             if (!newPassword) {
                 alert('Bitte neues Passwort eingeben!');
                 return;
@@ -667,13 +750,20 @@
             
             users[currentUser.username].password = newPassword;
             document.getElementById('newPassword').value = '';
-            alert('Passwort erfolgreich geändert!');
+            successDiv.textContent = 'Passwort erfolgreich geändert!';
+            successDiv.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successDiv.classList.add('hidden');
+            }, 3000);
         }
 
         // Event listeners
         document.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !document.getElementById('loginSection').classList.contains('hidden')) {
-                login();
+            if (e.key === 'Enter') {
+                if (!document.getElementById('loginPage').classList.contains('hidden')) {
+                    login();
+                }
             }
         });
 
