@@ -31,22 +31,32 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--text);
             line-height: 1.6;
         }
 
-        /* Login Styles */
+        /* Login Container */
         .login-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-color);
+            padding: 20px;
+            z-index: 1000;
+        }
+
+        .login-box {
             background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.2);
             width: 100%;
             max-width: 400px;
-            margin: 20px;
         }
 
         .login-header {
@@ -61,10 +71,6 @@
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .login-header p {
-            color: var(--text-secondary);
         }
 
         .form-group {
@@ -106,10 +112,6 @@
             box-shadow: 0 4px 12px rgba(92,107,192,0.3);
         }
 
-        .btn:active {
-            transform: translateY(0);
-        }
-
         .error-message {
             display: none;
             background: rgba(207,102,121,0.1);
@@ -121,56 +123,51 @@
             text-align: center;
         }
 
-        .discord-btn {
-            background: #5865F2;
-            margin-top: 1rem;
-        }
-
-        .discord-btn:hover {
-            background: #4752c4;
-        }
-
-        /* Panel Content Styles */
-        #panelContent {
+        /* Panel Styles */
+        .panel-container {
             display: none;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
+            padding: 2rem;
+            min-height: 100vh;
         }
 
-        .welcome-msg {
-            background: var(--card-bg);
-            color: var(--text);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
+        .welcome-banner {
+            background: linear-gradient(45deg, #1a1f2c, #2a2f3c);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border: 1px solid rgba(92,107,192,0.2);
             text-align: center;
-            border: 1px solid var(--accent);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .welcome-msg strong {
-            color: var(--accent);
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 0.5rem;
+        .category-section {
+            max-width: 1200px;
+            margin: 0 auto 3rem auto;
         }
 
-        .category-title {
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--separator);
+        }
+
+        .category-icon {
+            font-size: 1.8rem;
+        }
+
+        .category-header h2 {
             color: var(--accent);
             font-size: 1.5rem;
-            margin: 2.5rem 0 1.5rem 0;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--separator);
-            text-align: center;
+            margin: 0;
         }
 
         .templates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 2rem;
         }
 
         .template-card {
@@ -183,15 +180,8 @@
 
         .template-card:hover {
             transform: translateY(-2px);
-            background: var(--card-hover);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-        }
-
-        .template-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            border-color: var(--accent);
         }
 
         .template-text {
@@ -201,7 +191,7 @@
             padding: 1.2rem;
             margin: 1rem 0;
             font-family: 'Courier New', monospace;
-            font-size: 15px;
+            font-size: 0.9rem;
             line-height: 1.6;
             color: var(--text);
             white-space: pre-wrap;
@@ -209,21 +199,19 @@
 
         .copy-btn {
             width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
+            padding: 0.8rem;
             background: var(--accent);
             color: white;
-            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .copy-btn:hover {
-            background: #4757b0;
+            background: var(--accent-gradient);
             transform: translateY(-1px);
         }
 
@@ -231,88 +219,74 @@
             background: var(--success);
         }
 
-        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
+            from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
-
-        @keyframes successPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .success-animation {
-            animation: successPulse 0.5s ease-out;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 1rem;
-            }
-
-            .templates-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .category-title {
-                font-size: 1.3rem;
-            }
-
-            .template-card {
-                margin: 0.5rem 0;
-            }
-        }
     </style>
 </head>
 <body>
     <!-- Login Container -->
-    <div id="loginSection" class="login-container fade-in">
-        <div class="login-header">
-            <h1>FARMSUCHT TEAM PANEL</h1>
-            <p>Exklusiver Zugang für Team-Mitglieder</p>
-        </div>
-        
-        <div class="form-group">
-            <input type="text" id="nameInput" placeholder="Dein Name eingeben..." autocomplete="off">
-        </div>
-        
-        <div class="form-group">
-            <input type="password" id="codeInput" placeholder="Team-Code eingeben..." autocomplete="off">
-        </div>
-        
-        <button class="btn" onclick="checkAccess()">Zugang prüfen</button>
-        
-        <div id="errorMsg" class="error-message">
-            <p>❌ Falscher Code!</p>
-            <p>Hast du den richtigen Code eingegeben und bist du überhaupt im Farmsucht Team?</p>
-            <button class="btn discord-btn" onclick="window.open('https://dsc.gg/farmsucht', '_blank')">
-                Discord Server beitreten
-            </button>
+    <div id="loginSection" class="login-container">
+        <div class="login-box fade-in">
+            <div class="login-header">
+                <h1>FARMSUCHT TEAM PANEL</h1>
+                <p>Exklusiver Zugang für Team-Mitglieder</p>
+            </div>
+            
+            <div class="form-group">
+                <input type="text" id="nameInput" placeholder="Dein Name eingeben..." autocomplete="off">
+            </div>
+            
+            <div class="form-group">
+                <input type="password" id="codeInput" placeholder="Team-Code eingeben..." autocomplete="off">
+            </div>
+            
+            <button class="btn" onclick="checkAccess()">Zugang prüfen</button>
+            
+            <div id="errorMsg" class="error-message">
+                <p>❌ Falscher Code!</p>
+                <p>Hast du den richtigen Code eingegeben und bist du überhaupt im Farmsucht Team?</p>
+                <button class="btn" style="background: #5865F2; margin-top: 1rem;" onclick="window.open('https://dsc.gg/farmsucht', '_blank')">
+                    Discord Server beitreten
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Panel Content -->
-    <div id="panelContent">
-        <div class="welcome-msg">
-            <strong>✅ Erfolgreich eingeloggt!</strong>
-            Willkommen im Team-Panel, <span id="userName"></span>!
+    <div id="panelContent" class="panel-container">
+        <div class="welcome-banner fade-in">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem;">✅ Erfolgreich eingeloggt!</h2>
+            <p style="font-size: 1.2rem;">Willkommen im Team-Panel, <span id="userName"></span>!</p>
         </div>
 
         <!-- Support Begrüßungen -->
-        <h2 class="category-title">📞 Support Begrüßungen</h2>
-        <div class="templates-grid">
-            <!-- Template Cards wie zuvor, aber mit verbessertem Styling -->
+        <div class="category-section fade-in">
+            <div class="category-header">
+                <span class="category-icon">📞</span>
+                <h2>Support Begrüßungen</h2>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <h3>Begrüßung 1</h3>
+                    <div class="template-text" id="greeting1">Hallo @USER,
+
+wie kann ich dir weiterhelfen?
+
+LG
+<span class="username-placeholder">[DEIN NAME]</span></div>
+                    <button class="copy-btn" data-template="greeting1">Text kopieren</button>
+                </div>
+                <!-- Weitere Template-Cards hier -->
+            </div>
         </div>
 
-        <!-- Weitere Kategorien wie zuvor -->
+        <!-- Weitere Kategorien hier -->
     </div>
 
     <script>
@@ -331,7 +305,6 @@
             if (code === 'farmsucht2022') {
                 loginSection.style.display = 'none';
                 panelContent.style.display = 'block';
-                panelContent.classList.add('fade-in');
                 document.getElementById('userName').textContent = name;
                 
                 // Namen in allen Vorlagen ersetzen
@@ -341,6 +314,8 @@
                 });
             } else {
                 errorMsg.style.display = 'block';
+                errorMsg.classList.remove('fade-in');
+                void errorMsg.offsetWidth;
                 errorMsg.classList.add('fade-in');
             }
         }
@@ -353,11 +328,11 @@
                 
                 navigator.clipboard.writeText(templateText).then(() => {
                     this.textContent = '✅ Kopiert!';
-                    this.classList.add('copied', 'success-animation');
+                    this.classList.add('copied');
                     
                     setTimeout(() => {
                         this.textContent = 'Text kopieren';
-                        this.classList.remove('copied', 'success-animation');
+                        this.classList.remove('copied');
                     }, 2000);
                 }).catch(err => {
                     alert('Fehler beim Kopieren: ' + err);
